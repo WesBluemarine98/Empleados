@@ -11,4 +11,4 @@ El programa solicitado por el cliente debe cumplir las siguientes funciones
 - Poder hacer un reporte de las sanciones de las sanciones de los empleados de empresa "x" exportando los datos en un 
  archivo excel para su posterior examinacion
 
-#El cliente trabaja como RRHH para diferentes empresas necesita el programa para agilizar el trabajo y no tener que hacer todo a mano. 
+El cliente trabaja como RRHH para diferentes empresas necesita el programa para agilizar el trabajo y no tener que hacer todo a mano. 
