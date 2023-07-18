@@ -1,10 +1,12 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,7 +15,14 @@ namespace Empleados
 {
     public partial class impresion : Form
     {
-        public string Fecha,Legajo,Nombre,Apellido,Resolucion,Motivo, nroCaso,sector, puesto, codmotivo, motivo, codresolucion, resolucion, cantSusp;
+        public string Fecha,Nombre,Apellido,Resolucion,Motivo,sector, puesto, motivo,resolucion,nroCaso,informacion;
+        public int Legajo, codmotivo, codresolucion, cantSusp;
+        public Image img= null;
+        private void pnl1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         public impresion()
         {
             InitializeComponent();
@@ -21,13 +30,8 @@ namespace Empleados
   
         }
         ManejoDatos mdd = new ManejoDatos();
-        frmCaso caso = new frmCaso();
- 
-        private void contador(object sender, EventArgs e)
-        {
-            
-            //mdd.sumarcaso
-        }
+        //frmCaso caso = new frmCaso();
+
 
         private void Print(Panel panel1)
         {
@@ -46,37 +50,26 @@ namespace Empleados
 
         }
         private Bitmap memoryimg;
+       
         private void impresion_Load(object sender, EventArgs e)
         {
-            
+            MySqlDataReader drt = mdd.buscarCaso(Legajo.ToString());
+            drt.Read();
+
+            labelLegajo.Text = drt[0].ToString();
+            labelNombre.Text = drt[1].ToString();
+            labelApellido.Text = drt[2].ToString();
+            labelCaso.Text = drt[5].ToString();
+            labelMotivo.Text = drt[6].ToString();
+            labeltxtMot.Text = drt[7].ToString();
+            labelRes.Text = drt[8].ToString();
+            labeltxtRes.Text = drt[9].ToString();
             labelFecha.Text = Fecha;
             labelFecha2.Text=Fecha;
             labelFecha3.Text = Fecha;
-            labelCaso.Text = nroCaso;
-            labelLegajo.Text = Legajo;
-            labelApellido.Text = Apellido;
-            labelCantsusp.Text = cantSusp;
-            labelSector.Text = sector;
-            labelPuesto.Text = puesto;
-            labelNombre.Text = Nombre; 
-            labelMotivo.Text = codmotivo;
-            labeltxtMot.Text = motivo;
-            labelRes.Text = codresolucion;
-            labeltxtRes.Text = resolucion;
-            int resultado = 0;
-            string exito = "Se ha cargado la sancion.";
-            string error = "No se pudo cargar la sancion.";
-            resultado = mdd.cargarSancion(labelLegajo.Text,labelApellido.Text,labelNombre.Text,labelSector.Text,labelPuesto.Text,labelMotivo.Text,labeltxtMot.Text,labelRes.Text,labeltxtRes.Text,labelCantsusp.Text,labelFecha.Text);
-            if (resultado > 0)
-            {
-                MessageBox.Show(exito, "Modulo de empleado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show(error, "Modulo de empleado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            labellnfo.Text=informacion.ToString();
+            pbLogoImp.Image = img;
 
-            }
-            
         }
 
         private void cargandoDatos(object sender,EventArgs e)
@@ -100,7 +93,7 @@ namespace Empleados
 
         private void pictureBox1_MouseHover(object sender, EventArgs e)
         {
-            toolTip1.SetToolTip(pictureBox1, "Print");
+            toolTip1.SetToolTip(pictureBox1, "Imprimir");
         }
     }
 }

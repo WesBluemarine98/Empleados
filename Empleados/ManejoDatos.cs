@@ -16,7 +16,7 @@ namespace Empleados
     internal class ManejoDatos
     {
         //atributos
-
+        string cadcon = "Server=localhost;Database=employee;user=bd_empleados;password=Elvaron-dom4;";
         MySqlConnection conexion;
 
         private void conectarBD()
@@ -31,12 +31,11 @@ namespace Empleados
             conexion.Close();
         }
 
-        public int cargarSancion(string legajo, string apellido, string nombre, string sector, string puesto, string codmotivo, string motivo, string codresolucion, string resolucion, string cantSusp,string Fecha)
+        public int cargarSancion(int legajo, string apellido, string nombre, string sector, string puesto, int codmotivo, string motivo, int codresolucion, string resolucion, int cantSusp,string Fecha)
         {
             int confirmacion=0;
             try
             {
-                //INSERT INTO `employee`.`sanciones` (`Legajo`, `Apellido`, `Nombre`, `Sector`, `Puesto`, `CodMotivo`, `Motivo`, `CodResolucion`, `Resolucion`, `CantSusp`, `Fecha`) VALUES ('1', 'a', 'd', 'a', 'd', '1', 'a', '2', 'd', '3', '4-03-12');
                 string cargarinstruccion = "INSERT INTO `employee`.`sanciones` (`Legajo`, `Apellido`, `Nombre`, `Sector`, `Puesto`, `CodMotivo`, `Motivo`, `CodResolucion`, `Resolucion`, `CantSusp`, `Fecha`) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}');";
                 cargarinstruccion= string.Format(cargarinstruccion,legajo,apellido,nombre,sector,puesto,codmotivo,motivo,codresolucion,resolucion,cantSusp,Fecha);
                 conectarBD();
@@ -117,40 +116,43 @@ namespace Empleados
                 adaptar.Fill(tabla);
                 return tabla;
         }
-        private void autoincremento()
+
+        public DataTable listarcasos()
         {
             conectarBD();
-            MySqlCommand cmd=new MySqlCommand();
-            cmd.Connection = conexion;
-            cmd.CommandText = ("INSERT INTO `employee`.`sanciones` (`NroCaso`) VALUES ('{0}');");
-
-
+            MySqlCommand comando = new MySqlCommand();
+            comando.Connection = conexion;
+            comando.CommandText = ("SELECT s.Fecha,l.NroLegajo,l.Apellido,l.Nombre,l.Sector,l.Puesto,s.CodMotivo,s.Motivo,s.CodResolucion,s.Resolucion,s.CantSusp,s.NroCaso FROM employee.legajos l INNER JOIN employee.sanciones s ON l.NroLegajo = s.Legajo;");
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            adapter.SelectCommand = comando;
+            DataTable tabla = new DataTable();
+            adapter.Fill(tabla);
+            return tabla;
         }
-        public MySqlDataReader buscarCaso(string num_caso)
+        public MySqlDataReader buscarEmpleado(string num_legajo)
         {
-            MySqlDataReader leer = null;
-            string instruccion = "SELECT * FROM employee.nrocaso where NroCaso='{0}';";
-            instruccion = string.Format(instruccion, num_caso);
+            MySqlDataReader dr = null;
+            string instruccion = "SELECT * FROM employee.legajos where NroLegajo={0};";
+            instruccion = string.Format(instruccion, num_legajo);
             try
             {
                 conectarBD();
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexion;
                 cmd.CommandText = instruccion;
-                leer = cmd.ExecuteReader();
+                dr = cmd.ExecuteReader();
             }
             catch (Exception)
             {
 
                 throw;
             }
-            return leer;
+            return dr;
         }
-
-        public MySqlDataReader buscarEmpleado(string num_legajo)
+        public MySqlDataReader buscarCaso(string num_legajo)
         {
             MySqlDataReader dr= null;
-            string instruccion = "SELECT * FROM employee.legajos where NroLegajo='{0}';";
+            string instruccion = "SELECT l.NroLegajo,l.Nombre,l.Apellido,l.Sector,l.Puesto,s.NroCaso,s.CodMotivo,s.Motivo,s.CodResolucion,s.Resolucion,s.CantSusp,s.Fecha FROM employee.legajos l INNER JOIN employee.sanciones s ON l.NroLegajo = s.Legajo WHERE l.NroLegajo = {0} order by s.NroCaso desc limit 1;";
             instruccion = string.Format(instruccion, num_legajo);
             try
             {
@@ -164,6 +166,25 @@ namespace Empleados
             {
 
                 throw; 
+            }
+            return dr;
+        }
+        public MySqlDataReader buscarSancion(string orden)
+        {
+            MySqlDataReader dr = null;
+            string.Format(orden);
+            try
+            {
+                conectarBD();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexion;
+                cmd.CommandText = orden;
+                dr = cmd.ExecuteReader();
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
             return dr;
         }
@@ -187,6 +208,7 @@ namespace Empleados
             }
             finally
             {
+               
                 desconectarBD();
             }
             return (resultado);

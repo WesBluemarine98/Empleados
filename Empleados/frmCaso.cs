@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Asn1.BC;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,34 +14,46 @@ using System.Windows.Forms;
 namespace Empleados
 {
     public partial class frmCaso : Form
+
     {
+        public int leg,cantsusp, resultado = 0;
+        string Fecha,sector, puesto;
         ManejoDatos mdt=new ManejoDatos();
         public frmCaso()
         {
-
             InitializeComponent();
         }
 
-        private void bloquearCeldas(bool estado)
+        private void habilitarCeldas(bool estado)
         {
-            txtReso.Enabled= estado;
-            txtMotivo.Enabled= estado;
-            txtSusp.Enabled = estado;
-            txtSector.Enabled= estado;
-            txtPuesto.Enabled= estado;
+            txtReso.Enabled= false;
+            txtMotivo.Enabled= false;
+            txtSusp.Enabled = false;
+            txtLeg.Enabled = false;
+            txtNomb.Enabled = false;
+            txtApe.Enabled = false;
+            cbMotivo.Enabled = estado;
+            cbResolucion.Enabled = estado;
+            dtFecha.Enabled = estado;
+        }
+
+        private void validarcampo()
+        {
+         
+            var vr = !string.IsNullOrEmpty(txtBusqueda.Text);
+            btnBuscarEmpleado.Enabled = vr;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
            MySqlDataReader dr=mdt.buscarEmpleado(txtBusqueda.Text);
-            bloquearCeldas(false);
             if (dr.Read()) 
             {
+                habilitarCeldas(true);
                 txtLeg.Text = dr[0].ToString();
                 txtNomb.Text = dr[1].ToString();
                 txtApe.Text = dr[2].ToString();
-                txtSector.Text = dr[4].ToString();
-                txtPuesto.Text = dr[5].ToString();
 
 
             }
@@ -49,24 +62,50 @@ namespace Empleados
                 MessageBox.Show("Empleado no encontrado.", "Modulo de empleado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        int contcaso = 12;
+
+        ManejoDatos mdd= new ManejoDatos();
         private void btnImpresion_Click(object sender, EventArgs e)
         {
-                
-            impresion imp=new impresion();
-            imp.sector= txtSector.Text;
-            imp.puesto= txtPuesto.Text;
-            imp.Nombre = txtNomb.Text;
-            imp.Apellido= txtApe.Text;
-            imp.Legajo=txtLeg.Text;
-            imp.motivo = motivo;
-            imp.resolucion = resolucion;
-            imp.codmotivo = cbSancion.SelectedItem.ToString();
-            imp.codresolucion=cbResolucion.SelectedItem.ToString();
-            imp.nroCaso=contcaso.ToString();
+            MySqlDataReader dr = mdt.buscarEmpleado(txtBusqueda.Text);
+            dr.Read();
+            sector = dr[4].ToString();
+            puesto = dr[5].ToString();
+            string exito = "Se ha cargado la sancion.";
+            string error = "No se pudo cargar la sancion.";
+            cantsusp = Convert.ToInt32(txtSusp.Text);
+            Fecha= dtFecha.Value.ToString("yyyy/MM/dd");
+            leg = Convert.ToInt32(txtLeg.Text);
+            resultado = mdd.cargarSancion(leg, txtApe.Text, txtNomb.Text, sector, puesto, cbMotivo.SelectedIndex+1, motivo, cbResolucion.SelectedIndex+1, resolucion, cantsusp, Fecha);
+            if (resultado > 0)
+            {
+                MessageBox.Show(exito, "Modulo de empleado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show(error, "Modulo de empleado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            impresion imp = new impresion();
+            imp.Legajo= Convert.ToInt32(txtLeg.Text);
+            imp.informacion=txtInfo.Text;
             imp.Fecha = dtFecha.Value.ToString("yyyy/MM/dd");
-            imp.cantSusp=txtSusp.Text;
+            imp.img = PbLogo.Image;
+            limpiartodo();
             imp.ShowDialog();
+
+        }
+
+        private void limpiartodo()
+        {
+            txtBusqueda.Clear();
+            txtLeg.Clear();
+            txtNomb.Clear();
+            txtApe.Clear();
+            cbMotivo.ResetText();
+            txtMotivo.Clear();
+            cbResolucion.ResetText();
+            txtReso.Clear();
+            txtInfo.Clear();
+          
 
         }
 
@@ -74,70 +113,113 @@ namespace Empleados
         int indice = 0;
         private void cbSancion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            indice = cbSancion.SelectedIndex;
+            indice = cbMotivo.SelectedIndex;
             switch (indice)
             {
-                case 0: motivo = "Ausencia sin justificación"; break;
-                case 1: motivo = "Ausencia sin aviso ni justificación"; break;
-                case 2: motivo = "Impuntualidad"; break;
-                case 3: motivo = "Abandono de tareas"; break;
-                case 4: motivo = "Actos de indisciplina"; break;
-                case 5: motivo = "Indisciplina con superiores";break;
-                case 6: motivo = "Incumplimiento de tareas"; break;
-                case 7: motivo = "Negativa a realizar tareas"; break;
-                case 8: motivo = "Incumplimiento de normas"; break;
-                case 9: motivo = "Provocar riesgos de seguridad"; break;
-                case 10: motivo = "Mala fe laboral"; break;
-                case 11: motivo = "Falta de colab. y/o fidelidad"; break;
-                case 12: motivo = "Robo o hurto de materiales"; break;
-                case 13: motivo = "Negligencia en las tareas"; break;
-                case 14: motivo = "Emite caso"; break;
-                case 15: motivo = "Fallas en la producción"; break;
+                case 0: motivo = "1";break;
+                case 1: motivo = "2";break;
+                case 2: motivo = "3";break;
+                case 3: motivo = "4";break;
+                case 4: motivo = "5";break;
+                case 5: motivo = "6";break;
+                case 6: motivo = "7";break;
+                case 7: motivo = "8";break;
+                case 8: motivo = "9";break;
+                case 9: motivo = "10";break;
+                case 10: motivo = "11"; break;
+                case 11: motivo = "12";break;
+                case 12: motivo = "13";break;
+                case 13: motivo = "14";break;
+                case 14: motivo = "15";break;
+                case 15: motivo = "16"; break;
             }
             txtMotivo.Text = motivo.ToString();
+            motivo=cbMotivo.SelectedItem.ToString();
         }
 
         string resolucion;
-            int posicion = 0;
-        
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            validarcampo();
+        }
+
+        private void frmCaso_Load(object sender, EventArgs e)
+        {
+            btnBuscarEmpleado.Enabled = false;
+        }
+
+        private void CargarLogo()
+        {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Archivos de imagen (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png";
+                openFileDialog.Title = "Seleccionar imagen";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    
+                    string imagenPath = openFileDialog.FileName;
+                    PbLogo.Image = Image.FromFile(imagenPath);
+                    PbLogo.SizeMode = PictureBoxSizeMode.AutoSize;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la imagen.\n"+ ex.ToString(),"Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            CargarLogo();
+        }
+
+        int posicion = 0;
         private void cbResolucion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //bloquearCeldas(false);
-
             posicion = cbResolucion.SelectedIndex;
             switch (posicion)
             {
-                case 0: resolucion = "Llamado de atención"; break;
-                case 1: resolucion = "Apercibimiento"; break;
-                case 2: resolucion = "Suspensión";
+                case 0: resolucion = "1"; break;
+                case 1: resolucion = "2"; break;
+                case 2: resolucion = "3";
                     if (cbResolucion.SelectedIndex ==2)
                     {
                         txtSusp.Enabled = true;
                     }
                     break;
-                case 3: resolucion = "Suspensión condicionada";
+                case 3: resolucion = "4";
                     if (cbResolucion.SelectedIndex ==3)
                     {
                         txtSusp.Enabled = true;
                     }
                     break;
-                case 4: resolucion = "Intimación retomar tareas"; break;
-                case 5: resolucion = "Despido con causa"; break;
-                case 6: resolucion = "Despido sin causa"; break;
-                case 7: resolucion = "Ext. Mutuo acuerdo"; break;
-                case 8: resolucion = "Se acepta descargo"; break;
-                case 9: resolucion = "Se anula Caso"; break;
-                case 10: resolucion = "Menciones especiales"; break;
-                case 11: resolucion = "Observaciones varias"; break;
-                case 12: resolucion = "Emite caso"; break;
+                case 4: resolucion = "5"; break;
+                case 5: resolucion = "6"; break;
+                case 6: resolucion = "7"; break;
+                case 7: resolucion = "8"; break;
+                case 8: resolucion = "9"; break;
+                case 9: resolucion = "10"; break;
+                case 10: resolucion = "11"; break;
+                case 11: resolucion = "12"; break;
+                case 12: resolucion = "999"; break;
             }
             txtReso.Text = resolucion.ToString();
+            resolucion=cbResolucion.SelectedItem.ToString();
+
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-            bloquearCeldas(false);
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+            habilitarCeldas(false);
+        }
+        private void btnResoimpr_Click(object sender, EventArgs e)
+        {
+            ResolucionCaso res= new ResolucionCaso();
+            res.ShowDialog();
         }
     }
 }

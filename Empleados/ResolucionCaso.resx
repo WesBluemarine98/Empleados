@@ -117,14 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="printDocument1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>178, 17</value>
-  </metadata>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>319, 17</value>
+  <data name="label33.Text" xml:space="preserve">
+    <value>__________________________________________________________
+__________________________________________________________
+__________________________________________________________
+__________________________________________________________
+__________________________________________________________
+__________________________________________________________
+__________________________________________________________</value>
+  </data>
+  <metadata name="toolTip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
   <metadata name="printPreviewDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>114, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="printPreviewDialog1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -300,25 +306,7 @@
         wf+0BQAAgAUAAIAFAACAAQAAgAHB/4ABAACAAQAAgAEAALwBAAC8AQAAvAHB/4ABbP///5H/
 </value>
   </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>La empresa en ejercicio de sus facultades de dirección y gerencia, en ejercicio de las facultades del 
-artículo 67 de la Ley de Contrato de Trabajo y el reglamento interno, conocido y suscripto por 
-usted, que obra en su legajo han decidido abrir el siguiente caso.</value>
-  </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>______________________________________________________________________
-______________________________________________________________________
-______________________________________________________________________
-______________________________________________________________________
-______________________________________________________________________
-
-</value>
-  </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>_______________________________________________________________________
-_______________________________________________________________________
-_______________________________________________________________________
-_______________________________________________________________________
-_______________________________________________________________________</value>
-  </data>
+  <metadata name="printDocument1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>275, 17</value>
+  </metadata>
 </root>

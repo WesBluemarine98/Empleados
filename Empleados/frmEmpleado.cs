@@ -78,14 +78,6 @@ namespace Empleados
             btnGuardar.Enabled = true;
             btnEliminar.Enabled = true;
         }
-       /* private void asignarvalor(object sender, EventArgs e)
-        {
-            impresion impr= new impresion();
-            impr.sector=cbSector.SelectedValue.ToString();
-            impr.puesto=cbPuesto.SelectedValue.ToString();
-
-        }
-       */
 
         private void dgvEmpleados_CellClick(object sender, DataGridViewCellEventArgs e)
         {

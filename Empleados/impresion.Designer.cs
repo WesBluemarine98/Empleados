@@ -48,7 +48,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.labelMotivo = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.labelFecha2 = new System.Windows.Forms.Label();
@@ -59,17 +58,15 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.pnl1 = new System.Windows.Forms.Panel();
+            this.labellnfo = new System.Windows.Forms.Label();
             this.labeltxtMot = new System.Windows.Forms.Label();
             this.labeltxtRes = new System.Windows.Forms.Label();
             this.labelFecha3 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pbLogoImp = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.labelSector = new System.Windows.Forms.Label();
-            this.labelPuesto = new System.Windows.Forms.Label();
-            this.labelCantsusp = new System.Windows.Forms.Label();
             this.pnl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoImp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,7 +107,7 @@
             // labelFecha
             // 
             this.labelFecha.AutoSize = true;
-            this.labelFecha.Location = new System.Drawing.Point(600, 125);
+            this.labelFecha.Location = new System.Drawing.Point(596, 124);
             this.labelFecha.Name = "labelFecha";
             this.labelFecha.Size = new System.Drawing.Size(13, 13);
             this.labelFecha.TabIndex = 3;
@@ -150,7 +147,7 @@
             // 
             this.labelCaso.AutoSize = true;
             this.labelCaso.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCaso.Location = new System.Drawing.Point(88, 150);
+            this.labelCaso.Location = new System.Drawing.Point(82, 151);
             this.labelCaso.Name = "labelCaso";
             this.labelCaso.Size = new System.Drawing.Size(15, 17);
             this.labelCaso.TabIndex = 7;
@@ -160,7 +157,7 @@
             // 
             this.labelRes.AutoSize = true;
             this.labelRes.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRes.Location = new System.Drawing.Point(88, 183);
+            this.labelRes.Location = new System.Drawing.Point(88, 184);
             this.labelRes.Name = "labelRes";
             this.labelRes.Size = new System.Drawing.Size(15, 17);
             this.labelRes.TabIndex = 8;
@@ -170,7 +167,7 @@
             // 
             this.labelLegajo.AutoSize = true;
             this.labelLegajo.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLegajo.Location = new System.Drawing.Point(88, 213);
+            this.labelLegajo.Location = new System.Drawing.Point(86, 213);
             this.labelLegajo.Name = "labelLegajo";
             this.labelLegajo.Size = new System.Drawing.Size(15, 17);
             this.labelLegajo.TabIndex = 9;
@@ -180,7 +177,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(11, 243);
+            this.label10.Location = new System.Drawing.Point(11, 244);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(783, 63);
             this.label10.TabIndex = 11;
@@ -190,7 +187,7 @@
             // 
             this.labelApellido.AutoSize = true;
             this.labelApellido.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelApellido.Location = new System.Drawing.Point(148, 213);
+            this.labelApellido.Location = new System.Drawing.Point(145, 212);
             this.labelApellido.Name = "labelApellido";
             this.labelApellido.Size = new System.Drawing.Size(15, 17);
             this.labelApellido.TabIndex = 12;
@@ -200,7 +197,7 @@
             // 
             this.labelNombre.AutoSize = true;
             this.labelNombre.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNombre.Location = new System.Drawing.Point(218, 213);
+            this.labelNombre.Location = new System.Drawing.Point(209, 213);
             this.labelNombre.Name = "labelNombre";
             this.labelNombre.Size = new System.Drawing.Size(15, 17);
             this.labelNombre.TabIndex = 13;
@@ -236,21 +233,11 @@
             this.label7.TabIndex = 16;
             this.label7.Text = "Información Adicional:";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(10, 422);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(791, 24);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "_______________________________________________________________________";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(36, 498);
+            this.label11.Location = new System.Drawing.Point(36, 536);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(96, 16);
             this.label11.TabIndex = 18;
@@ -260,7 +247,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(313, 498);
+            this.label12.Location = new System.Drawing.Point(313, 536);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(45, 16);
             this.label12.TabIndex = 19;
@@ -270,7 +257,7 @@
             // 
             this.labelFecha2.AutoSize = true;
             this.labelFecha2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFecha2.Location = new System.Drawing.Point(313, 470);
+            this.labelFecha2.Location = new System.Drawing.Point(313, 516);
             this.labelFecha2.Name = "labelFecha2";
             this.labelFecha2.Size = new System.Drawing.Size(14, 16);
             this.labelFecha2.TabIndex = 20;
@@ -280,7 +267,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(618, 498);
+            this.label13.Location = new System.Drawing.Point(618, 536);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(99, 16);
             this.label13.TabIndex = 21;
@@ -290,7 +277,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(19, 538);
+            this.label14.Location = new System.Drawing.Point(14, 568);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(773, 40);
             this.label14.TabIndex = 22;
@@ -300,10 +287,10 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(17, 589);
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(14, 608);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(780, 120);
+            this.label15.Size = new System.Drawing.Size(780, 144);
             this.label15.TabIndex = 23;
             this.label15.Text = resources.GetString("label15.Text");
             // 
@@ -311,7 +298,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(20, 743);
+            this.label9.Location = new System.Drawing.Point(20, 767);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(121, 16);
             this.label9.TabIndex = 24;
@@ -321,7 +308,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(538, 743);
+            this.label16.Location = new System.Drawing.Point(538, 767);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(45, 16);
             this.label16.TabIndex = 25;
@@ -331,7 +318,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(18, 796);
+            this.label17.Location = new System.Drawing.Point(14, 816);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(724, 40);
             this.label17.TabIndex = 26;
@@ -340,9 +327,8 @@
             // 
             // pnl1
             // 
-            this.pnl1.Controls.Add(this.labelCantsusp);
-            this.pnl1.Controls.Add(this.labelPuesto);
-            this.pnl1.Controls.Add(this.labelSector);
+            this.pnl1.BackColor = System.Drawing.Color.White;
+            this.pnl1.Controls.Add(this.labellnfo);
             this.pnl1.Controls.Add(this.labeltxtMot);
             this.pnl1.Controls.Add(this.labeltxtRes);
             this.pnl1.Controls.Add(this.labelFecha3);
@@ -356,7 +342,6 @@
             this.pnl1.Controls.Add(this.labelFecha2);
             this.pnl1.Controls.Add(this.label12);
             this.pnl1.Controls.Add(this.label11);
-            this.pnl1.Controls.Add(this.label8);
             this.pnl1.Controls.Add(this.label7);
             this.pnl1.Controls.Add(this.labelMotivo);
             this.pnl1.Controls.Add(this.label6);
@@ -372,18 +357,30 @@
             this.pnl1.Controls.Add(this.labelFecha);
             this.pnl1.Controls.Add(this.label5);
             this.pnl1.Controls.Add(this.label1);
-            this.pnl1.Controls.Add(this.pictureBox2);
+            this.pnl1.Controls.Add(this.pbLogoImp);
             this.pnl1.Location = new System.Drawing.Point(1, 4);
             this.pnl1.Name = "pnl1";
             this.pnl1.Size = new System.Drawing.Size(819, 999);
             this.pnl1.TabIndex = 0;
             this.pnl1.Click += new System.EventHandler(this.pictureBox1_MouseHover);
+            this.pnl1.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl1_Paint);
+            // 
+            // labellnfo
+            // 
+            this.labellnfo.AutoEllipsis = true;
+            this.labellnfo.AutoSize = true;
+            this.labellnfo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labellnfo.Location = new System.Drawing.Point(11, 385);
+            this.labellnfo.Name = "labellnfo";
+            this.labellnfo.Size = new System.Drawing.Size(18, 20);
+            this.labellnfo.TabIndex = 31;
+            this.labellnfo.Text = "?";
             // 
             // labeltxtMot
             // 
             this.labeltxtMot.AutoSize = true;
             this.labeltxtMot.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labeltxtMot.Location = new System.Drawing.Point(148, 329);
+            this.labeltxtMot.Location = new System.Drawing.Point(148, 330);
             this.labeltxtMot.Name = "labeltxtMot";
             this.labeltxtMot.Size = new System.Drawing.Size(15, 17);
             this.labeltxtMot.TabIndex = 30;
@@ -393,7 +390,7 @@
             // 
             this.labeltxtRes.AutoSize = true;
             this.labeltxtRes.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labeltxtRes.Location = new System.Drawing.Point(117, 182);
+            this.labeltxtRes.Location = new System.Drawing.Point(117, 183);
             this.labeltxtRes.Name = "labeltxtRes";
             this.labeltxtRes.Size = new System.Drawing.Size(15, 17);
             this.labeltxtRes.TabIndex = 29;
@@ -403,7 +400,7 @@
             // 
             this.labelFecha3.AutoSize = true;
             this.labelFecha3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFecha3.Location = new System.Drawing.Point(538, 718);
+            this.labelFecha3.Location = new System.Drawing.Point(538, 745);
             this.labelFecha3.Name = "labelFecha3";
             this.labelFecha3.Size = new System.Drawing.Size(14, 16);
             this.labelFecha3.TabIndex = 28;
@@ -413,21 +410,21 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(11, 859);
+            this.label18.Location = new System.Drawing.Point(11, 856);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(791, 96);
+            this.label18.Size = new System.Drawing.Size(791, 120);
             this.label18.TabIndex = 27;
             this.label18.Text = resources.GetString("label18.Text");
             // 
-            // pictureBox2
+            // pbLogoImp
             // 
-            this.pictureBox2.Image = global::Empleados.Properties.Resources.Microsoft_PowerPoint_Logos_CAELAR_Modo_de_compatibilidad__2_;
-            this.pictureBox2.Location = new System.Drawing.Point(14, 21);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(130, 98);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.pbLogoImp.BackColor = System.Drawing.Color.White;
+            this.pbLogoImp.Location = new System.Drawing.Point(14, 21);
+            this.pbLogoImp.Name = "pbLogoImp";
+            this.pbLogoImp.Size = new System.Drawing.Size(48, 48);
+            this.pbLogoImp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbLogoImp.TabIndex = 0;
+            this.pbLogoImp.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -440,37 +437,11 @@
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             this.pictureBox1.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
             // 
-            // labelSector
-            // 
-            this.labelSector.AutoSize = true;
-            this.labelSector.Location = new System.Drawing.Point(383, 150);
-            this.labelSector.Name = "labelSector";
-            this.labelSector.Size = new System.Drawing.Size(36, 13);
-            this.labelSector.TabIndex = 31;
-            this.labelSector.Text = "sector";
-            // 
-            // labelPuesto
-            // 
-            this.labelPuesto.AutoSize = true;
-            this.labelPuesto.Location = new System.Drawing.Point(383, 182);
-            this.labelPuesto.Name = "labelPuesto";
-            this.labelPuesto.Size = new System.Drawing.Size(39, 13);
-            this.labelPuesto.TabIndex = 32;
-            this.labelPuesto.Text = "puesto";
-            // 
-            // labelCantsusp
-            // 
-            this.labelCantsusp.AutoSize = true;
-            this.labelCantsusp.Location = new System.Drawing.Point(383, 213);
-            this.labelCantsusp.Name = "labelCantsusp";
-            this.labelCantsusp.Size = new System.Drawing.Size(29, 13);
-            this.labelCantsusp.TabIndex = 33;
-            this.labelCantsusp.Text = "susp";
-            // 
             // impresion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(821, 1016);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pnl1);
@@ -479,7 +450,7 @@
             this.Load += new System.EventHandler(this.impresion_Load);
             this.pnl1.ResumeLayout(false);
             this.pnl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoImp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -505,7 +476,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label labelMotivo;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label labelFecha2;
@@ -517,12 +487,11 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel pnl1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox PbLogo;
         private System.Windows.Forms.Label labelFecha3;
         private System.Windows.Forms.Label labeltxtMot;
         private System.Windows.Forms.Label labeltxtRes;
-        private System.Windows.Forms.Label labelCantsusp;
-        private System.Windows.Forms.Label labelPuesto;
-        private System.Windows.Forms.Label labelSector;
+        private System.Windows.Forms.Label labellnfo;
+        private System.Windows.Forms.PictureBox pbLogoImp;
     }
 }

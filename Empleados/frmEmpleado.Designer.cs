@@ -35,9 +35,13 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnNuevo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnGuardar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnCancelar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.gbListarEmpleados = new System.Windows.Forms.GroupBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.btnListar = new System.Windows.Forms.Button();
@@ -49,10 +53,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cbPuesto = new System.Windows.Forms.ComboBox();
-            this.btnNuevo = new System.Windows.Forms.ToolStripButton();
-            this.btnGuardar = new System.Windows.Forms.ToolStripButton();
-            this.btnCancelar = new System.Windows.Forms.ToolStripButton();
-            this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.gbListarEmpleados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
@@ -122,24 +122,60 @@
             this.btnEliminar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(968, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(847, 25);
             this.toolStrip1.TabIndex = 9;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Image = global::Empleados.Properties.Resources.icons8_más_48;
+            this.btnNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(125, 22);
+            this.btnNuevo.Text = "Agregar Empleado";
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Image = global::Empleados.Properties.Resources.icons8_guardar_48;
+            this.btnGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(69, 22);
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Image = global::Empleados.Properties.Resources.icons8_eliminar_48__1_;
+            this.btnCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(73, 22);
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Image = global::Empleados.Properties.Resources.icons8_eliminar_48;
+            this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(70, 22);
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // gbListarEmpleados
             // 
@@ -148,7 +184,7 @@
             this.gbListarEmpleados.Controls.Add(this.dgvEmpleados);
             this.gbListarEmpleados.Location = new System.Drawing.Point(227, 46);
             this.gbListarEmpleados.Name = "gbListarEmpleados";
-            this.gbListarEmpleados.Size = new System.Drawing.Size(698, 367);
+            this.gbListarEmpleados.Size = new System.Drawing.Size(617, 367);
             this.gbListarEmpleados.TabIndex = 10;
             this.gbListarEmpleados.TabStop = false;
             this.gbListarEmpleados.Text = "Listar Empleados";
@@ -180,7 +216,7 @@
             // 
             // btnListar
             // 
-            this.btnListar.Location = new System.Drawing.Point(21, 23);
+            this.btnListar.Location = new System.Drawing.Point(6, 23);
             this.btnListar.Name = "btnListar";
             this.btnListar.Size = new System.Drawing.Size(75, 23);
             this.btnListar.TabIndex = 1;
@@ -192,12 +228,14 @@
             // 
             this.dgvEmpleados.AllowUserToAddRows = false;
             this.dgvEmpleados.AllowUserToDeleteRows = false;
-            this.dgvEmpleados.AllowUserToOrderColumns = true;
+            this.dgvEmpleados.AllowUserToResizeColumns = false;
+            this.dgvEmpleados.AllowUserToResizeRows = false;
             this.dgvEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmpleados.Location = new System.Drawing.Point(21, 58);
+            this.dgvEmpleados.Location = new System.Drawing.Point(6, 52);
             this.dgvEmpleados.Name = "dgvEmpleados";
             this.dgvEmpleados.ReadOnly = true;
-            this.dgvEmpleados.Size = new System.Drawing.Size(657, 303);
+            this.dgvEmpleados.RowHeadersVisible = false;
+            this.dgvEmpleados.Size = new System.Drawing.Size(603, 303);
             this.dgvEmpleados.TabIndex = 0;
             this.dgvEmpleados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmpleados_CellClick);
             // 
@@ -318,47 +356,11 @@
             this.cbPuesto.Size = new System.Drawing.Size(149, 21);
             this.cbPuesto.TabIndex = 12;
             // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Image = global::Empleados.Properties.Resources.icons8_más_48;
-            this.btnNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(125, 22);
-            this.btnNuevo.Text = "Agregar Empleado";
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Image = global::Empleados.Properties.Resources.icons8_guardar_48;
-            this.btnGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(69, 22);
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Image = global::Empleados.Properties.Resources.icons8_eliminar_48__1_;
-            this.btnCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(73, 22);
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Image = global::Empleados.Properties.Resources.icons8_eliminar_48;
-            this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(70, 22);
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
             // frmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 434);
+            this.ClientSize = new System.Drawing.Size(847, 417);
             this.Controls.Add(this.cbPuesto);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbListarEmpleados);

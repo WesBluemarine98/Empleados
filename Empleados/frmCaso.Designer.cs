@@ -33,6 +33,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnBuscarEmpleado = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtInfo = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txtSusp = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtReso = new System.Windows.Forms.TextBox();
@@ -40,7 +42,7 @@
             this.dtFecha = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.cbResolucion = new System.Windows.Forms.ComboBox();
-            this.cbSancion = new System.Windows.Forms.ComboBox();
+            this.cbMotivo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtApe = new System.Windows.Forms.TextBox();
@@ -50,12 +52,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnImpresion = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtSector = new System.Windows.Forms.TextBox();
-            this.txtPuesto = new System.Windows.Forms.TextBox();
+            this.btnResoimpr = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.PbLogo = new System.Windows.Forms.PictureBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -70,10 +73,11 @@
             // txtBusqueda
             // 
             this.txtBusqueda.Location = new System.Drawing.Point(95, 23);
-            this.txtBusqueda.MaxLength = 12;
+            this.txtBusqueda.MaxLength = 99999999;
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(100, 20);
             this.txtBusqueda.TabIndex = 2;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
             // groupBox1
             // 
@@ -86,6 +90,7 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar Empleado";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnBuscarEmpleado
             // 
@@ -99,9 +104,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtPuesto);
-            this.groupBox2.Controls.Add(this.txtSector);
-            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.PbLogo);
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.txtInfo);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtSusp);
             this.groupBox2.Controls.Add(this.label8);
@@ -110,7 +115,7 @@
             this.groupBox2.Controls.Add(this.dtFecha);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.cbResolucion);
-            this.groupBox2.Controls.Add(this.cbSancion);
+            this.groupBox2.Controls.Add(this.cbMotivo);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.txtApe);
@@ -121,15 +126,33 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(13, 79);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(450, 252);
+            this.groupBox2.Size = new System.Drawing.Size(546, 343);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos del Empleado";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // txtInfo
+            // 
+            this.txtInfo.Location = new System.Drawing.Point(12, 223);
+            this.txtInfo.MaxLength = 1500;
+            this.txtInfo.Multiline = true;
+            this.txtInfo.Name = "txtInfo";
+            this.txtInfo.Size = new System.Drawing.Size(522, 114);
+            this.txtInfo.TabIndex = 20;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 207);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(111, 13);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Información Adicional:";
             // 
             // txtSusp
             // 
             this.txtSusp.Location = new System.Drawing.Point(161, 155);
+            this.txtSusp.MaxLength = 365;
             this.txtSusp.Name = "txtSusp";
             this.txtSusp.Size = new System.Drawing.Size(28, 20);
             this.txtSusp.TabIndex = 18;
@@ -146,23 +169,25 @@
             // 
             // txtReso
             // 
-            this.txtReso.Location = new System.Drawing.Point(130, 131);
+            this.txtReso.Location = new System.Drawing.Point(224, 130);
+            this.txtReso.MaxLength = 35;
             this.txtReso.Name = "txtReso";
-            this.txtReso.Size = new System.Drawing.Size(158, 20);
+            this.txtReso.Size = new System.Drawing.Size(27, 20);
             this.txtReso.TabIndex = 16;
             // 
             // txtMotivo
             // 
-            this.txtMotivo.Location = new System.Drawing.Point(172, 103);
+            this.txtMotivo.Location = new System.Drawing.Point(305, 104);
+            this.txtMotivo.MaxLength = 35;
             this.txtMotivo.Name = "txtMotivo";
-            this.txtMotivo.Size = new System.Drawing.Size(127, 20);
+            this.txtMotivo.Size = new System.Drawing.Size(19, 20);
             this.txtMotivo.TabIndex = 15;
             // 
             // dtFecha
             // 
             this.dtFecha.CustomFormat = "yyyy-MM-dd";
             this.dtFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFecha.Location = new System.Drawing.Point(49, 179);
+            this.dtFecha.Location = new System.Drawing.Point(51, 177);
             this.dtFecha.Name = "dtFecha";
             this.dtFecha.Size = new System.Drawing.Size(84, 20);
             this.dtFecha.TabIndex = 14;
@@ -170,7 +195,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 181);
+            this.label9.Location = new System.Drawing.Point(10, 180);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 13);
             this.label9.TabIndex = 13;
@@ -180,50 +205,50 @@
             // 
             this.cbResolucion.FormattingEnabled = true;
             this.cbResolucion.Items.AddRange(new object[] {
-            "1",
-            "﻿﻿2 ",
-            "﻿﻿3",
-            "﻿﻿4 ",
-            "﻿﻿5",
-            "﻿﻿6",
-            "﻿﻿7",
-            "﻿﻿8 ",
-            "﻿﻿9 ",
-            "﻿﻿﻿10 ",
-            "﻿﻿11﻿ ",
-            "﻿﻿﻿12 ",
-            "999"});
+            "Llamado de atención ",
+            "﻿﻿Apercibimiento",
+            "﻿﻿Suspensión",
+            "﻿﻿Suspensión condicionada",
+            "﻿﻿Intimación retomar tareas",
+            "﻿﻿Despido con causa",
+            "﻿﻿Despido sin causa",
+            "﻿﻿Ext. Mutuo acuerdo",
+            "﻿﻿Se acepta acuerdo",
+            "﻿﻿﻿Se anula caso",
+            "﻿﻿Menciones especiales",
+            "﻿﻿﻿Observaciones varias",
+            "Emite caso"});
             this.cbResolucion.Location = new System.Drawing.Point(70, 130);
             this.cbResolucion.Name = "cbResolucion";
-            this.cbResolucion.Size = new System.Drawing.Size(54, 21);
+            this.cbResolucion.Size = new System.Drawing.Size(147, 21);
             this.cbResolucion.TabIndex = 9;
             this.cbResolucion.SelectedIndexChanged += new System.EventHandler(this.cbResolucion_SelectedIndexChanged);
             // 
-            // cbSancion
+            // cbMotivo
             // 
-            this.cbSancion.FormattingEnabled = true;
-            this.cbSancion.Items.AddRange(new object[] {
-            "1  ",
-            "﻿﻿2  ",
-            "﻿﻿3  ",
-            "﻿﻿4  ",
-            "﻿5  ",
-            "﻿﻿6  ",
-            "﻿﻿7 ",
-            "﻿﻿8 ",
-            "﻿﻿9  ",
-            "﻿﻿﻿10  ",
-            "﻿﻿11  ﻿",
-            "﻿﻿﻿12  ",
-            "﻿﻿13﻿  ",
-            "﻿﻿﻿14  ",
-            "﻿﻿﻿15  ",
-            "﻿﻿﻿16  "});
-            this.cbSancion.Location = new System.Drawing.Point(118, 103);
-            this.cbSancion.Name = "cbSancion";
-            this.cbSancion.Size = new System.Drawing.Size(48, 21);
-            this.cbSancion.TabIndex = 8;
-            this.cbSancion.SelectedIndexChanged += new System.EventHandler(this.cbSancion_SelectedIndexChanged);
+            this.cbMotivo.FormattingEnabled = true;
+            this.cbMotivo.Items.AddRange(new object[] {
+            "Ausencia sin justificación",
+            "Ausencia sin aviso ni justificación",
+            "Impuntualidad",
+            "Abandono de tareas",
+            "Actos de indisciplina",
+            "Indisciplina con superiores",
+            "Incumplimiento de tareas",
+            "Negativa a realizar tareas",
+            "Incumplimiento de normas",
+            "Provocar riesgos de seguridad",
+            "Mala fe laboral",
+            "Falta de colab. y/o fidelidad",
+            "Robo o hurto de materiales",
+            "Negligencia en las tareas",
+            "Emite caso",
+            "Fallas en la producción"});
+            this.cbMotivo.Location = new System.Drawing.Point(118, 103);
+            this.cbMotivo.Name = "cbMotivo";
+            this.cbMotivo.Size = new System.Drawing.Size(181, 21);
+            this.cbMotivo.TabIndex = 8;
+            this.cbMotivo.SelectedIndexChanged += new System.EventHandler(this.cbSancion_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -296,7 +321,7 @@
             // 
             // btnImpresion
             // 
-            this.btnImpresion.Location = new System.Drawing.Point(174, 337);
+            this.btnImpresion.Location = new System.Drawing.Point(165, 428);
             this.btnImpresion.Name = "btnImpresion";
             this.btnImpresion.Size = new System.Drawing.Size(99, 23);
             this.btnImpresion.TabIndex = 5;
@@ -304,52 +329,56 @@
             this.btnImpresion.UseVisualStyleBackColor = true;
             this.btnImpresion.Click += new System.EventHandler(this.btnImpresion_Click);
             // 
-            // label7
+            // btnResoimpr
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(201, 48);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 13);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Sector:";
+            this.btnResoimpr.Location = new System.Drawing.Point(282, 428);
+            this.btnResoimpr.Name = "btnResoimpr";
+            this.btnResoimpr.Size = new System.Drawing.Size(113, 23);
+            this.btnResoimpr.TabIndex = 6;
+            this.btnResoimpr.Text = "Imprimir resolucion";
+            this.btnResoimpr.UseVisualStyleBackColor = true;
+            this.btnResoimpr.Click += new System.EventHandler(this.btnResoimpr_Click);
             // 
-            // label10
+            // button1
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(201, 75);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(43, 13);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "Puesto:";
+            this.button1.Location = new System.Drawing.Point(249, 17);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Logo";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // txtSector
+            // PbLogo
             // 
-            this.txtSector.Location = new System.Drawing.Point(246, 45);
-            this.txtSector.Name = "txtSector";
-            this.txtSector.Size = new System.Drawing.Size(144, 20);
-            this.txtSector.TabIndex = 21;
+            this.PbLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PbLogo.Location = new System.Drawing.Point(330, 17);
+            this.PbLogo.Name = "PbLogo";
+            this.PbLogo.Size = new System.Drawing.Size(130, 98);
+            this.PbLogo.TabIndex = 22;
+            this.PbLogo.TabStop = false;
             // 
-            // txtPuesto
+            // openFileDialog1
             // 
-            this.txtPuesto.Location = new System.Drawing.Point(246, 71);
-            this.txtPuesto.Name = "txtPuesto";
-            this.txtPuesto.Size = new System.Drawing.Size(142, 20);
-            this.txtPuesto.TabIndex = 22;
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // frmCaso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 372);
+            this.ClientSize = new System.Drawing.Size(586, 471);
+            this.Controls.Add(this.btnResoimpr);
             this.Controls.Add(this.btnImpresion);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmCaso";
             this.Text = "Generador de Sancion";
+            this.Load += new System.EventHandler(this.frmCaso_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PbLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -367,7 +396,7 @@
         private System.Windows.Forms.TextBox txtNomb;
         private System.Windows.Forms.TextBox txtLeg;
         private System.Windows.Forms.Button btnImpresion;
-        private System.Windows.Forms.ComboBox cbSancion;
+        private System.Windows.Forms.ComboBox cbMotivo;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbResolucion;
@@ -377,9 +406,11 @@
         private System.Windows.Forms.TextBox txtSusp;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dtFecha;
-        private System.Windows.Forms.TextBox txtPuesto;
-        private System.Windows.Forms.TextBox txtSector;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtInfo;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnResoimpr;
+        private System.Windows.Forms.PictureBox PbLogo;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
